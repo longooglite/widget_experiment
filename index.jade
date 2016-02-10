@@ -6,7 +6,10 @@ mixin widget(dum, types)
         input(type="text", value=dum.name)
         select
             each type in types
-                option=type
+                if(dum.type && dum.type == type)
+                    option(selected)= type
+                else
+                    option= type
         if(dummy.indexOf(dum) != 0)
             a(href="#") -
         if(dummy.indexOf(dum) != 0 && dummy.indexOf(dum) != dummy.length - 1)
@@ -16,6 +19,7 @@ mixin widget(dum, types)
 doctype html
 html
     head
+        link(href="widget_templating.css",rel="stylesheet")
     body
         - var dummy = [{"name":"John Smith","type":"primary"},{"name":"Ann Other","type":"contributing"},{"name":"Morris Merrier","type":"tertiary"}, {"name":"Lee Terrily-Hu","type":"basically uninvolved to be honest"}];
         - var types = ["primary", "contributing", "tertiary", "basically uninvolved to be honest"];
@@ -23,5 +27,6 @@ html
             input.mps-json-enums-widget(type="hidden",name="PeerReviewedAuthors",data-widget-enums=dummy)
             each dumdum in dummy
                 +widget(dumdum, types)
-    #widget-template.template
-        +widget("|name|", types)
+        #widget-template.template
+            +widget("|name|", types)
+    script(type="text/javascript",src="experiment.js")
