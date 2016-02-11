@@ -1,8 +1,8 @@
 mixin widget(dum, types)
     div.widget
-        a(href="#") up
+        span.up(onclick="elevateRow(this)") up
         span &nbsp;
-        a(href="#") down
+        span.down(onclick="condemnRow(this)") down
         input(type="text", value=dum.name)
         select
             each type in types
@@ -10,23 +10,26 @@ mixin widget(dum, types)
                     option(selected)= type
                 else
                     option= type
-        if(dummy.indexOf(dum) != 0)
-            a(href="#") -
-        if(dummy.indexOf(dum) != 0 && dummy.indexOf(dum) != dummy.length - 1)
-            span &nbsp;
-        if(dummy.indexOf(dum) != dummy.length - 1)
-            a(href="#") +
+        span.minus(onclick="deleteRow(this)") minus
+        span &nbsp;
+        span.plus(onclick="addRow(this)") plus
 doctype html
 html
     head
         link(href="widget_templating.css",rel="stylesheet")
-    body
+    body#body
         - var dummy = [{"name":"John Smith","type":"primary"},{"name":"Ann Other","type":"contributing"},{"name":"Morris Merrier","type":"tertiary"}, {"name":"Lee Terrily-Hu","type":"basically uninvolved to be honest"}];
         - var types = ["primary", "contributing", "tertiary", "basically uninvolved to be honest"];
-        form
+        #dummy
+        form#form
             input.mps-json-enums-widget(type="hidden",name="PeerReviewedAuthors",data-widget-enums=dummy)
-            each dumdum in dummy
-                +widget(dumdum, types)
+            #divs
+                each dumdum in dummy
+                    +widget(dumdum, types)
+            div(onclick="handleForm(this)") Enter
+        #output
         #widget-template.template
-            +widget("|name|", types)
+            +widget({"name":"|name|"}, types)
+    script(type="text/javascript") var types = ["primary", "contributing", "tertiary", "basically uninvolved to be honest"];
+    script(type="text/javascript") var dummy = [{"name":"John Smith","type":"primary"},{"name":"Ann Other","type":"contributing"},{"name":"Morris Merrier","type":"tertiary"}, {"name":"Lee Terrily-Hu","type":"basically uninvolved to be honest"}];
     script(type="text/javascript",src="experiment.js")

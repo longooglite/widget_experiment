@@ -2,3 +2,11 @@
 {
     display: none;
 }
+.widget:first-of-type .minus
+{
+    display:none;
+}
+.widget:last-of-type .plus
+{
+    display:none;
+}
