@@ -1,8 +1,8 @@
 mixin widget(dum, types)
     div.widget
-        span.up(onclick="elevateRow(this)") up
+        span.up(onclick="lowerRow(this)") up
         span &nbsp;
-        span.down(onclick="condemnRow(this)") down
+        span.down(onclick="raiseRow(this)") down
         input(type="text", value=dum.name)
         select
             each type in types
@@ -18,18 +18,14 @@ html
     head
         link(href="widget_templating.css",rel="stylesheet")
     body#body
-        - var dummy = [{"name":"John Smith","type":"primary"},{"name":"Ann Other","type":"contributing"},{"name":"Morris Merrier","type":"tertiary"}, {"name":"Lee Terrily-Hu","type":"basically uninvolved to be honest"}];
         - var types = ["primary", "contributing", "tertiary", "basically uninvolved to be honest"];
         #dummy
         form#form
-            input.mps-json-enums-widget(type="hidden",name="PeerReviewedAuthors",data-widget-enums=dummy)
+            input.mps-json-enums-widget(type="hidden",id="PeerReviewedAuthors",data-widget-enum-name="",name="PeerReviewedAuthors",data-widget-enums="{'types'}")
             #divs
-                each dumdum in dummy
-                    +widget(dumdum, types)
             div(onclick="handleForm(this)") Enter
         #output
         #widget-template.template
             +widget({"name":"|name|"}, types)
     script(type="text/javascript") var types = ["primary", "contributing", "tertiary", "basically uninvolved to be honest"];
-    script(type="text/javascript") var dummy = [{"name":"John Smith","type":"primary"},{"name":"Ann Other","type":"contributing"},{"name":"Morris Merrier","type":"tertiary"}, {"name":"Lee Terrily-Hu","type":"basically uninvolved to be honest"}];
     script(type="text/javascript",src="experiment.js")

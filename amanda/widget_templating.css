@@ -1,0 +1,7 @@
+.template,
+.widget:first-of-type .minus,
+.widget:first-of-type .up,
+.widget:last-of-type .down
+{
+    display:none;
+}
