@@ -17,7 +17,6 @@ $(function() {
                 for(var ei = 0; ei < existing.length; ei++)
                 {
                     $form.append($this.newRow(existing[ei], types));
-
                 }
             }
             else
