@@ -1,0 +1,14 @@
+//
+   Created by Kirk on 2/11/2016.
+doctype html
+html
+    head
+        script(type="text/javascript",src="../public/javascripts/lib/jquery/dist/jquery.js")
+        script(type="text/javascript",src="../public/javascripts/lib/jquery-ui/ui/core.js")
+        script(type="text/javascript",src="../public/javascripts/lib/jquery-ui/ui/widget.js")
+        script(type="text/javascript",src="widget.js")
+        script(type="text/javascript",src="main.js")
+    body
+        form
+            input.mps-json-enums-widget(type="hidden",id="PeerReviewedAuthors",data-widget-enum-name="",name="PeerReviewedAuthors",data-widget-enums='[{"type":"primary"},{"type":"secondary"},{"type":"tertiary"}]')
+            #widget-wrapper
