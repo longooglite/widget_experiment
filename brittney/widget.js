@@ -22,9 +22,7 @@ $(function() {
             }
             else
             {
-                $form.append($this.newRow({"name":"1"}, types));
-                $form.append($this.newRow({"name":"2"}, types));
-                $form.append($this.newRow({"name":"3"}, types));
+                $form.append($this.newRow({}, types));
             }
             $this._on($this.document, {
                 'click.repeating-input-selector-plus': function(event) {
